@@ -3,25 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Showcase</title>
+    <title>Frontend Projects</title>
         <style>
-            body { background: #121212; color: #f0f0f0; text-align: center; font-family: sans-serif;
+            body { background: #121212;
+                 color: #f0f0f0; 
+                 text-align: center; 
+                 font-family: sans-serif;
+                 padding: 0 10px;
+            }
+
+            h1, h2, p {
+                text-align: center;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
             }
             
             .proj-link {
-                color: var(--accent-color);
+               display: inline-block;
+               padding: 12px 24px;
+               margin: 10px 0;
+               background-color: #d8532b;
+               color: #fff;
+               text-decoration: none;
+               border-radius: 6px;
+               font-weight: bold;
+               transition: background 0.3s, transform 0.2s;
             }
+
+        .proj-link:hover {
+             background-color: #7846d4;
+             transform: scale(1.05);
+        }
         </style>
 </head>
 <body>
 <h1>Frontend Showcase</h1>
-<p><i>Click the links to view my projects:</i></p>
+<p><i>Click project buttons to test and view:</i></p>
 
     <h2><a href="https://codepen.io/v1Rtu3-h05t/pen/MYaMavM" class="proj-link">HVAC Advanced Thermostat</a></h2>
-    <img src="../assets/images/HVACSC.png" alt="Screenshot of HVAC Advanced Thermostat" width="700" height="auto">
+    <img src="../assets/images/HVACSC.png" alt="Screenshot of HVAC Advanced Thermostat">
     
     <h2><a href="https://codepen.io/v1Rtu3-h05t/pen/ZYQQRbq" class="proj-link">OSINT Device Browsing Tracker</a></h2>
-    <img src="../assets/images/advistrack.png" alt="Screenshot of Visibility tracker" width="700" height="auto">
+    <img src="../assets/images/advistrack.png" alt="Screenshot of Visibility tracker">
     <hr>
 </body>
 </html>
