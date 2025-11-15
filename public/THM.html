@@ -5,22 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TryHackMe Cert</title>
   <style>
+    /* Base styling */
     body { 
-      background: #121212; 
-      color: #f0f0f0; 
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a); 
+      color: #eaeaea; 
       text-align: center; 
-      font-family: sans-serif; 
+      font-family: 'Poppins', sans-serif; 
+      margin: 0; 
+      padding: 0;
     }
+
+    /* Heading */
+    h1 { 
+      font-size: 2.2rem; 
+      margin-top: 60px; 
+      color: #ffffff; 
+      letter-spacing: 1px; 
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6); 
+    }
+
+    /* Image */
     img { 
-      max-width: 90%; 
-      margin-top: 40px; 
-      border-radius: 8px; 
+      max-width: 85%; 
+      margin: 40px auto; 
+      border-radius: 12px; 
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    img:hover { 
+      transform: scale(1.03); 
+      box-shadow: 0 10px 28px rgba(0,0,0,0.7); 
+    }
+
+    /* Paragraph */
+    p { 
+      max-width: 700px; 
+      margin: 20px auto; 
+      font-size: 1.1rem; 
+      line-height: 1.6; 
+      color: #cfcfcf; 
+      padding: 0 20px; 
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      padding: 20px 0;
+      background: rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer a {
+      color: #4db6ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #82cfff;
     }
   </style>
 </head>
 <body>
   <h1>Cybersecurity Certification</h1>
+  <hr>
+  <div class="divider"></div>
   <img src="../assets/images/TryHackMe.jpeg" alt="TryHackMe Certification Badge">
-  <p>Earned a certification in Cybersecurity 101 from TryHackMe, demonstrating foundational knowledge and skills in cybersecurity principles and practices.</p>
+  <p>
+    Earned a certification in <strong>Cybersecurity 101</strong> from TryHackMe, demonstrating foundational knowledge and skills in cybersecurity principles and practices.
+  </p>
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <a href="/index.html">⬅ Go back to Home Page</a>
+  </footer>
 </body>
 </html>

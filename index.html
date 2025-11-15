@@ -3,172 +3,471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Living Portfolio</title>
+  <title>Anthony Morales | Full Stack Developer</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --accent-color: #00bcd4;
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --accent: #00d9ff;
+      --accent-glow: rgba(0, 217, 255, 0.3);
+      --card-bg: #151515;
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: sans-serif;
-      transition: background-color 0.3s, color 0.3s;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      transition: all 0.3s ease;
     }
     
     .theme-dark {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-      --accent-color: #00bcd4;
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --accent: #00d9ff;
+      --accent-glow: rgba(0, 217, 255, 0.3);
+      --card-bg: #151515;
     }
 
     .theme-light {
-      --bg-color: #ffffff;
-      --text-color: #111111;
-      --accent-color: #007acc;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666666;
+      --accent: #007acc;
+      --accent-glow: rgba(0, 122, 204, 0.2);
+      --card-bg: #ffffff;
     }
 
     .theme-solarized {
-      --bg-color: #fdf6e3;
-      --text-color: #657b83;
-      --accent-color: #b58900;
+      --bg-primary: #fdf6e3;
+      --bg-secondary: #eee8d5;
+      --text-primary: #657b83;
+      --text-secondary: #93a1a1;
+      --accent: #b58900;
+      --accent-glow: rgba(181, 137, 0, 0.2);
+      --card-bg: #fdf6e3;
     }
 
     .theme-hacker {
-      --bg-color: #0f0f0f;
-      --text-color: #33ff33;
-      --accent-color: #00ffcc;
+      --bg-primary: #000000;
+      --bg-secondary: #0a0a0a;
+      --text-primary: #00ff00;
+      --text-secondary: #00cc00;
+      --accent: #00ffcc;
+      --accent-glow: rgba(0, 255, 204, 0.3);
+      --card-bg: #0a0a0a;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--text-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .section-subtitle {
+      color: var(--accent);
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+  .custom-list {
+    list-style-position: inside;
+    color: var(--text-secondary);
+    line-height: 2;
+    padding-left: 0;
+  }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    /* Theme Switcher */
+    .theme-selector {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      animation: fadeIn 1s ease;
     }
 
     .theme-button {
-      background-color: var(--accent-color);
-      color: var(--text-color); /* much better contrast */
-      margin: 10px 5px;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 5px;
+      background: var(--card-bg);
+      color: var(--text-primary);
+      padding: 12px 24px;
+      border: 2px solid var(--accent);
+      border-radius: 25px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    .theme-hacker .theme-button {
-      color: #000000; /* black text inside buttons only on hacker theme */
+    .theme-button:hover {
+      background: var(--accent);
+      color: var(--bg-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+
+    /* Profile Section */
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      margin: 50px 0;
+      padding: 40px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      animation: slideInLeft 0.8s ease;
     }
 
     .profile-img {
-      border-radius: 8px;
-      margin-bottom: 10px;
-      max-width: 100%;
-      height: auto;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 4px solid var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+      transition: transform 0.3s ease;
     }
 
+    .profile-img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .profile-content h2 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .profile-content p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Cards Section */
+    .section {
+      margin: 50px 0;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .section h3 {
+      color: var(--accent);
+      font-size: 2rem;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 4px solid var(--accent);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 25px var(--accent-glow);
+    }
+
+    .skill-card::before {
+      content: "▹";
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+
+    /* Links */
     .nav-link {
-      color: var(--accent-color);
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    footer a {
-      margin-right: 20px;
-      text-decoration: none;
-      color: var(--accent-color);
-      font-weight: bold;
+    .nav-link:hover {
+      color: var(--text-primary);
+      text-shadow: 0 0 10px var(--accent-glow);
     }
-    footer a:last-child {
-      margin-right: 0;
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 2px solid transparent;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+
+    .project-card h4 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding: 40px 20px;
+      background: var(--card-bg);
+      border-top: 2px solid var(--accent);
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+      text-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    footer p {
+      color: var(--text-secondary);
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.1rem; }
+      .profile-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .profile-img {
+        width: 250px;
+        height: 250px;
+      }
     }
   </style>
 </head>
 
-<body>
-  <h1>Anthony's Living Portfolio</h1>
-  <hr>
+<body class="theme-dark">
+  <div class="container">
+    <header>
+      <h1>Anthony Morales</h1>
+      <p class="subtitle">Full Stack Developer | Cyber Security Enthusiast | HVAC Specialist</p>
+      
+      <div class="theme-selector">
+        <button class="theme-button" onclick="setTheme('dark')">🌙 Dark</button>
+        <button class="theme-button" onclick="setTheme('light')">☀️ Light</button>
+        <button class="theme-button" onclick="setTheme('solarized')">🌅 Solarized</button>
+        <button class="theme-button" onclick="setTheme('hacker')">💻 Hacker</button>
+      </div>
+    </header>
 
-  <p><i>Choose your preferred theme below:</i></p>
-  <div>
-    <button class="theme-button" onclick="setTheme('dark')">Dark</button>
-    <button class="theme-button" onclick="setTheme('light')">Light</button>
-    <button class="theme-button" onclick="setTheme('solarized')">Solarized</button>
-    <button class="theme-button" onclick="setTheme('hacker')">Hacker</button>
+    <div class="profile-section">
+      <img src="./assets/images/me1912.jpg" alt="Anthony Morales" class="profile-img">
+      <div class="profile-content">
+        <h2>About Me</h2>
+        <p>
+          I'm a full stack programmer with experience in multiple fields outside of programming, notably HVAC and refrigeration.
+          I created this as a living portfolio to showcase some of my projects as I build them, and to keep people in the tech
+          community updated on my accomplishments and progress. Feel free to reach out via the Contact Me page, or to follow
+          my Online Presence!
+        </p>
+      </div>
+    </div>
+
+    <section class="section">
+      <h3>Skills & Education</h3>
+      
+      <h4 class="section-subtitle">Skills:</h4>
+      <ul class="custom-list">
+        <li>HTML, CSS, JavaScript</li>
+        <li>Python programming</li>
+        <li>Building pen testing tools</li>
+        <li>Linux (Ubuntu, Kali)</li>
+        <li>Cyber Security Fundamentals</li>
+        <li>HVAC systems and refrigeration</li>
+        <li>Music composition and fitness enthusiasm</li>
+        <li>Self-taught with ongoing learning through online resources and communities</li>
+      </ul>
+      
+      <h4 class="section-subtitle">Education:</h4>
+      <ul class="custom-list">
+        <li><a href="./public/THM.html" class="nav-link">TryHackMe Cyber Security Certification</a></li>
+        <li><a href="./public/hvaccert.html" class="nav-link">Associate of Science Degree in HVAC and Refrigeration</a></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h3>Project Showcase</h3>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>🔒 Cyber Security Tools</h4>
+          <p>Custom-built penetration testing tools and security utilities</p>
+          <a href="./public/CS.html" class="nav-link">View Projects →</a>
+        </div>
+        <div class="project-card">
+          <h4>🎨 Frontend Projects</h4>
+          <p>Modern web interfaces and interactive experiences</p>
+          <a href="./public/frontend.html" class="nav-link">View Projects →</a>
+        </div>
+        <div class="project-card">
+          <h4>⚙️ Backend Projects</h4>
+          <p>Server-side applications and API development</p>
+          <a href="./public/backend.html" class="nav-link">View Projects →</a>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <img src="./assets/images/me1912.jpg" alt="Anthony Morales smiling" width="350" class="profile-img">
-
-  <h2>Summary</h2>
-  <p>
-    I'm a full stack programmer with experience in multiple fields outside of programming, notably HVAC and refrigeration.
-    I created this as a living portfolio to showcase some of my projects as I build them, and to keep people in the tech
-    community updated on my accomplishments and progress. Feel free to reach out via the Contact Me page, or to follow
-    my Online Presence!
-  </p>
-  <hr>
-
-  <h3>Skills and Education</h3>
-  <ul>
-    <li>Associate of Science degree</li>
-    <li>HTML, CSS, JavaScript</li>
-    <li>Python programming</li>
-    <li>Building pen testing tools</li>
-    <li>Linux (Ubuntu, Kali)</li>
-    <li>Cyber Security Fundamentals</li>
-    <li>HVAC systems and refrigeration</li>
-    <li>Music composition and fitness enthusiasm</li>
-    <li>Self-taught with ongoing learning through online resources and communities</li>
-    <li><a href="./public/THM.html" class="nav-link">TryHackMe Cyber Security Certification</a></li>
-    <li><a href="./public/hvaccert.html" class="nav-link">Associate of Science Degree in HVAC and Refrigeration</a></li>
-  </ul>
-
-  <h3>My Showcase</h3>
-  <ul>
-    <li><a href="./public/CS.html" class="nav-link">Cyber Security Tools</a></li>
-    <li><a href="./public/frontend.html" class="nav-link">Frontend Projects</a></li>
-    <li><a href="./public/backend.html" class="nav-link">Backend Projects</a></li>
-  </ul>
-
-  <hr>
-
   <footer>
-  <a href="./public/about.html">About Me</a>
-  <a href="./public/contact.html">Contact Me</a>
+    <div class="footer-links">
+      <a href="./public/contact.html">Contact Me</a>
+      <a href="./public/SL.html">Online Presence</a>
+      <a href="./public/about.html">More About Me</a>
+    </div>
     <p>&copy; 2025 Anthony Morales. All rights reserved.</p>
-    <p>This portfolio and all original content herein are protected under U.S. copyright law. Unauthorized reproduction, distribution, or modification is prohibited.</p>
+    <p>This portfolio and all original content herein are protected under U.S. copyright law.</p>
     <p>For licensing inquiries or collaboration requests, please contact me via telephone or email.</p>
   </footer>
 
   <script>
-  function setTheme(theme) {
-    document.body.className = ''; // Reset classes
-    if (theme === 'dark') {
-      document.body.classList.add('theme-dark');
-    } else if (theme === 'light') {
-      document.body.classList.add('theme-light');
-    } else if (theme === 'solarized') {
-      document.body.classList.add('theme-solarized');
-    } else if (theme === 'hacker') {
-      document.body.classList.add('theme-hacker');
+    function setTheme(theme) {
+      document.body.className = 'theme-' + theme;
+      localStorage.setItem('theme', theme);
     }
-    localStorage.setItem('theme', theme);
-  }
 
-  (function () {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-  })();
-</script>
-
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      setTheme(savedTheme);
+    })();
+  </script>
 </body>
 </html>
-
-<!-- TODO 2: Add Your previous projects' HTML into the public folder -->
-
-<!-- TODO 3: Take screenshots of your project previews and add the images to the images folder -->
-
-<!-- TODO 4: Add titles/subtitles etc. -->
-
-<!-- TODO 5: Add a link to the project pages -->
-
-<!-- TODO 6: Add images to show the project previews
-HINT for TODO 6: You can use the height attribute set to 200 to make the image smaller:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-height -->
-
-<!-- TODO 7: Add the Contact Me and About Me page links -->
