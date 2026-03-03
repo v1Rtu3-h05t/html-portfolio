@@ -142,24 +142,6 @@
         </div>
       </div>
     </section>
-
-    <section class="chat-section">
-      <h3>💬 Ask Me Anything</h3>
-      <p>Got a question about my work, cybersecurity, or tech in general? Ask anonymously below — powered by AI.</p>
-      <div id="chat-box">
-        <div id="chat-header">
-          <div class="chat-dot"></div>
-          <span>Anonymous Chat — Online</span>
-        </div>
-        <div id="chat-messages">
-          <div class="msg bot">Hey! Ask me anything about Anthony's work, cybersecurity, full stack development, or tech in general. All chats are anonymous. 👋</div>
-        </div>
-        <div id="chat-input-row">
-          <input id="chat-input" type="text" placeholder="Type your question..." maxlength="500" autocomplete="off" />
-          <button id="chat-send">SEND</button>
-        </div>
-      </div>
-    </section>
   </div>
 
   <footer>
@@ -172,72 +154,5 @@
     <p>This portfolio and all original content herein are protected under U.S. copyright law.</p>
     <p>For licensing inquiries or collaboration requests, please contact me via telephone or email.</p>
   </footer>
-
-  <script>
-    function setTheme(theme) {
-      document.body.className = 'theme-' + theme;
-      localStorage.setItem('theme', theme);
-    }
-    (function() {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      setTheme(savedTheme);
-    })();
-
-    const WORKER_URL = 'https://cybersec-chat-worker.virtuehost19.workers.dev';
-    const messagesEl = document.getElementById('chat-messages');
-    const inputEl = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('chat-send');
-    let history = [];
-
-    function scrollBottom() { messagesEl.scrollTop = messagesEl.scrollHeight; }
-
-    function addMessage(text, type) {
-      const div = document.createElement('div');
-      div.className = 'msg ' + type;
-      div.textContent = text;
-      messagesEl.appendChild(div);
-      scrollBottom();
-    }
-
-    function showTyping() {
-      const div = document.createElement('div');
-      div.className = 'typing'; div.id = 'typing-indicator';
-      div.innerHTML = '<span></span><span></span><span></span>';
-      messagesEl.appendChild(div); scrollBottom();
-    }
-
-    function removeTyping() { const t = document.getElementById('typing-indicator'); if (t) t.remove(); }
-
-    async function sendMessage() {
-      const text = inputEl.value.trim();
-      if (!text) return;
-      inputEl.value = ''; sendBtn.disabled = true;
-      addMessage(text, 'user'); showTyping();
-      try {
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, history })
-        });
-        const data = await res.json();
-        removeTyping();
-        if (data.reply) {
-          history.push({ role: 'user', content: text });
-          history.push({ role: 'assistant', content: data.reply });
-          if (history.length > 20) history = history.slice(-20);
-          addMessage(data.reply, 'bot');
-        } else {
-          addMessage('Something went wrong. Please try again.', 'error');
-        }
-      } catch (err) {
-        removeTyping();
-        addMessage('Could not reach the server. Try again later.', 'error');
-      }
-      sendBtn.disabled = false; inputEl.focus();
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
-  </script>
 </body>
 </html>
